@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Pessoa;
+use App\User;
 use Illuminate\Http\Request;
+Use App\Pessoa;
 
 class PessoaController extends Controller
 {
@@ -15,7 +17,8 @@ class PessoaController extends Controller
     public function index()
     {
         //$pessoas = \App\Pessoa::all(); //todas as pessoas do banco
-        $pessoas = \App\Pessoa::paginate(10); //cria 10 pessoas por pagina.
+       // $pessoas = \App\Pessoa::paginate(10); //cria 10 pessoas por pagina.
+        $pessoas = Pessoa::paginate(10); //forma simplificada
       
         return view('pessoas.index', compact('pessoas'));
         
@@ -39,7 +42,7 @@ class PessoaController extends Controller
      */
     public function store(Request $request)
     {
-        $pessoa = new \App\Pessoa();
+        $pessoa = new Pessoa();
 
         $pessoa->nome = $request->nome;
         $pessoa->telefone =$request->telefone;
@@ -58,7 +61,7 @@ class PessoaController extends Controller
      */
     public function show($id)
     {
-        $pessoa = \App\Pessoa::find($id); //encontra a lista de pessoas que estão na pasta App
+        $pessoa = Pessoa::find($id); //encontra a lista de pessoas que estão na pasta App
         return view( 'pessoas.show', compact('pessoa'));
     }
 
@@ -70,7 +73,7 @@ class PessoaController extends Controller
      */
     public function edit($id)
     {
-        $pessoa = \App\Pessoa::find($id);
+        $pessoa = Pessoa::find($id);
         return view('pessoas.form', compact('pessoa')); //pega lista de pessoas e transforma em array
 
     }
@@ -84,7 +87,7 @@ class PessoaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $pessoa = \App\Pessoa::find($id); //procura pelo id e puxa pessoa
+        $pessoa = Pessoa::find($id); //procura pelo id e puxa pessoa
         $pessoa->nome = $request->nome;
         $pessoa->telefone =$request->telefone;
         $pessoa->email = $request->email;
@@ -102,7 +105,7 @@ class PessoaController extends Controller
      */
     public function destroy($id)
     {
-        $pessoa = \App\Pessoa::find($id); 
+        $pessoa = Pessoa::find($id); 
         $pessoa->delete();
         return redirect('/pessoas');
     }
