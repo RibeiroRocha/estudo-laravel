@@ -14,7 +14,7 @@
 <body>
     <h1>Pessoas Cadastradas</h1>
 
-    <a href="/pessoas/create">Novo Cadastro</a>
+    <a href="/pessoas/create">Novo Cadastro</a> 
     <hr>
     <table style="width:100%">
         <tr>
@@ -28,7 +28,9 @@
             <td>{{ $p->nome}}</td>
             <td>{{ $p->telefone}}</td>
             <td>{{ $p->email}}</td>
-            <td>...</td>
+            <td>
+            <a href="/pessoas/{{ $p->id }}/edit">Editar</a>  {{-- cria url--}}
+            </td>
         </tr>            
         @endforeach
             

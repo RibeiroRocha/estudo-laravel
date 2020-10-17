@@ -19,3 +19,5 @@ Route::get('/', function () {
 Route::get('pessoas', 'PessoaController@index');
 Route::get('pessoas/create', 'PessoaController@create');
 Route::post('pessoas', 'PessoaController@store');
+Route::get('pessoas/{pessoa}/edit', 'PessoaController@edit');
+Route::put('pessoas/{pessoa}', 'PessoaController@update'); //depois do @ é a função que irá retornar, se update estiver vazio não retorna nada
