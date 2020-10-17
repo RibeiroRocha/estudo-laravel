@@ -58,7 +58,8 @@ class PessoaController extends Controller
      */
     public function show($id)
     {
-        //
+        $pessoa = \App\Pessoa::find($id); //encontra a lista de pessoas que estão na pasta App
+        return view( 'pessoas.show', compact('pessoa'));
     }
 
     /**
@@ -101,6 +102,8 @@ class PessoaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $pessoa = \App\Pessoa::find($id); 
+        $pessoa->delete();
+        return redirect('/pessoas');
     }
 }
