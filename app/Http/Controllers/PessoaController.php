@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Pessoa;
 use App\User;
 use Illuminate\Http\Request;
-Use App\Pessoa;
+
 
 class PessoaController extends Controller
 {
@@ -40,7 +40,7 @@ class PessoaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request )
     {
         $pessoa = new Pessoa();
 
@@ -59,9 +59,9 @@ class PessoaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show( Pessoa $pessoa )
     {
-        $pessoa = Pessoa::find($id); //encontra a lista de pessoas que estão na pasta App
+        //$pessoa = Pessoa::find($id); //encontra a lista de pessoas que estão na pasta App
         return view( 'pessoas.show', compact('pessoa'));
     }
 
@@ -71,9 +71,9 @@ class PessoaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit( Pessoa $pessoa )
     {
-        $pessoa = Pessoa::find($id);
+        //$pessoa = Pessoa::find($id);
         return view('pessoas.form', compact('pessoa')); //pega lista de pessoas e transforma em array
 
     }
@@ -85,9 +85,10 @@ class PessoaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+
+    public function update(Request $request, Pessoa $pessoa)
     {
-        $pessoa = Pessoa::find($id); //procura pelo id e puxa pessoa
+        //$pessoa = Pessoa::find($id); //procura pelo id e puxa pessoa
         $pessoa->nome = $request->nome;
         $pessoa->telefone =$request->telefone;
         $pessoa->email = $request->email;
@@ -103,9 +104,9 @@ class PessoaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy( Pessoa $pessoa )
     {
-        $pessoa = Pessoa::find($id); 
+        //$pessoa = Pessoa::find($id); 
         $pessoa->delete();
         return redirect('/pessoas');
     }
