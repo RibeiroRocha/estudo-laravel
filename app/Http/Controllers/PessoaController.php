@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Pessoa;
 use App\User;
 use Illuminate\Http\Request;
+use App\Http\Requests\StorePessoaPost;
 
 
 class PessoaController extends Controller
@@ -40,7 +41,7 @@ class PessoaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request )
+    public function store(StorePessoaPost $request )
     {
         /*
         $pessoa = new Pessoa();
@@ -50,12 +51,13 @@ class PessoaController extends Controller
         $pessoa->email = $request->email;
 
         $pessoa->save();
-        */
         
+
         $request->validate([
             'nome' => 'required',
             'telefone' => 'required'
         ]);
+        */
 
         Pessoa::create($request->all()); //substitui todas as linhas em comentário
 
