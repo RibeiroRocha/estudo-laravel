@@ -97,7 +97,7 @@ class PessoaController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function update(Request $request, Pessoa $pessoa)
+    public function update(StorePessoaPost $request, Pessoa $pessoa)
     {
         //$pessoa = Pessoa::find($id); //procura pelo id e puxa pessoa
         /*$pessoa->nome = $request->nome;
