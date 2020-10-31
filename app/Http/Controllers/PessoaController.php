@@ -19,7 +19,8 @@ class PessoaController extends Controller
     {
         //$pessoas = \App\Pessoa::all(); //todas as pessoas do banco
        // $pessoas = \App\Pessoa::paginate(10); //cria 10 pessoas por pagina.
-        $pessoas = Pessoa::paginate(10); //forma simplificada
+        //$pessoas = Pessoa::paginate(10); //forma simplificada
+        $pessoas = auth()->user()->pessoas()->paginate(10);
       
         return view('pessoas.index', compact('pessoas'));
         
@@ -59,7 +60,10 @@ class PessoaController extends Controller
         ]);
         */
 
-        Pessoa::create($request->all()); //substitui todas as linhas em comentário
+       // dd(auth()->user());
+       
+       // Pessoa::create($request->all()); //substitui todas as linhas em comentário
+       auth()->user()->pessoas()->create($request->all());
 
         return redirect('/pessoas');
     }

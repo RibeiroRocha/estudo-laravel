@@ -18,7 +18,9 @@ class CreatePessoasTable extends Migration
             $table->string('nome', 100);
             $table->string('telefone', 20);
             $table->string('email', 100)->nullable();
-            $table->timestamps();
+            $table->unsignedBigInteger('user_id'); //chave estrangeira 
+            $table->foreign('user_id')->references('id')->on('users'); //que vai fazer referencia com id
+            $table->timestamps(); //na tabela de usuários
         });
     }
 
